@@ -1,0 +1,401 @@
+\documentclass{article}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{titlesec}
+\usepackage{gensymb}
+\usepackage{amsmath}
+\usepackage[a4paper,total={6in,9in}]{geometry}
+\usepackage{amssymb}
+\usepackage[colorlinks=true, allcolors=black]{hyperref}
+\graphicspath{ {./images/} }
+
+
+\title{PHY180: Classical Mechanics (Taught by Prof. Brian Wilson)}
+\author{Miles Ehrlich}
+\date{August 2025}
+
+\begin{document}
+\newcommand{\intg}[2]{\int\limits_{#1}^{#2}}
+
+\newcommand{\dif}[2]{\frac{d{#1}}{d{#2}}}
+\newcommand{\prt}[2]{\frac{d {#1}}{d {#2}}}
+\newcommand{\sig}{\sum \limits_{i=1}^{n}}
+\maketitle
+\tableofcontents
+\pagebreak
+\section{Introduction}
+
+\subsection{Dimensions and Units}
+\begin{center}
+\begin{tabular}{|m{4cm}|m{4cm}|m{4cm}|}
+     \hline
+     Unit & Symbols & Unit\\[2ex]
+     \hline
+     Distance & \textbf{x, y, z, r} or $\vec{x}, \vec{y}, \vec{z}, \vec{r}$ & $\left[d \right]=$ 1m\\[2ex]
+     \hline 
+     Angle & $\theta$, $\phi$, & $\left[ \theta \right]$ = rad, $\degree$\\[2ex]
+     \hline
+     Time & t&$\left[t \right]=$ 1s\\[2ex]
+     \hline
+     Mass & m & $\left[m \right]=$ 1kg\\[2ex]
+     \hline
+     Charge & Q, q& $\left[q \right]=$ 1C=1As  \\[2ex]
+     \hline
+     Temperature & T & $\left[T \right]=$ 1K \\[2ex]
+     \hline 
+     Velocity & $\vec{v}, \textbf{v}$& $\left[\| \vec{v} \|\right]=1\frac{m}{s}$\\[2ex]
+     \hline 
+     Acceleration & $\vec{a}$, \textbf{a} & $\left[\| \vec{a} \|\right]=1\frac{m}{s^2}$\\[2ex]
+     \hline 
+     Angular Velocity & $\omega$ & $\left[ \omega \right] = \frac{\text{rad}}{s}$\\[2ex]
+     \hline
+     Jerk & $\vec{j}$, \textbf{j} & $\left[ \| \vec{j} \| \right]=$ 1$\frac{m}{s^3}$ \\[2ex]
+     \hline
+     Force & $\vec{F}$, \textbf{F} & $\left[\| \vec{F} \| \right]= 1\text{N} = \text{1kg}\cdot \frac{m}{s^2}$ \\[2ex]
+     \hline 
+     Energy/Work & W, E, KE, U & $\left[E \right]=$ 1J \\[2ex]
+     \hline
+     
+\end{tabular}
+\end{center}
+
+\pagebreak
+\section{Modeling in Physics}
+\subsection{What is a model?}
+A model in physics is a simplified situation containing explicitly defined parameters and quantities that behave according to physical laws best deemed to apply to the given context. 
+
+\vspace{5mm} %5mm vertical space
+
+A model includes:
+
+\begin{itemize}
+    \item A list of relevant objects
+    \item A list of different possible interactions between objects
+    \item A list of relevant properties of those objects
+    \item A declaration that nothing else impacts the system at a \textbf{measurable} level
+    \item An implicit declaration of how much precision is used for measurements
+
+\end{itemize}
+Example: A goalkeeper kicks a football.
+
+\begin{itemize}
+    \item Objects: Earth, Ball, Foot, Air
+    \item Properties: $v_{f,ball}$, \text{ } $m_{foot}$, \text{ } $m_{ball}$, \text{ } $A_{ball}$, \text{ } $\rho_{air}$, \text{ } $g$
+    \item Interactions: Transfer of momentum (collision) from foot to ball, force of gravity acting on ball, force of air resistance acting on ball while airborne
+    \item Ignored factors: Ball spinning, rotation of earth, mass of Jupiter etc.
+\end{itemize}
+
+\textbf{In general: If the problem does not specify that air resistance should be considered, it is a fair assumption that it may be ignored.}
+
+\subsection{Systems}
+A system is a collection of the things we care about---they are likely interacting. The surroundings are everything else in the universe. If the surroundings interact with the system, it is not isolated.
+\pagebreak
+\section{Uncertainties}
+\pagebreak
+\section{Motion}
+\subsection{Motion Diagrams}
+A motion diagram indicates the location of an object at different times, so the time step $\Delta t$ is constant. Interactions with other objects cause the motion to:
+
+\begin{itemize}
+    \item Speed up -- the positions grow further apart
+    \item Slow down -- the positions become closer together
+    \item Change direction -- the path curves
+\end{itemize}
+
+Example motion diagram:
+
+\begin{figure}[h]
+\includegraphics[scale=4]{motiondiagram}
+\centering
+\end{figure}
+Note that the arrow indicates the direction of initial velocity $\vec{v_0}$.
+
+\subsection{Equations of Motion}
+\subsubsection{Constant Velocity}
+
+$$ \vec{r}=\vec{r_0}+\vec{v}t $$
+\subsubsection{Constant Acceleration}
+$$\frac{d\vec{r}}{dt}=\vec{v}=\int \vec{a} dt= \vec{a}t+\vec{v_0}$$
+$$\vec{r}=\int \vec{v} dt = \frac{1}{2} \vec{a}t + \vec{v_0}t + \vec{r_0}$$
+\subsubsection{Linearly Increasing Acceleration}
+$$\frac{d\vec{r}}{dt}=\vec{v}=\int \vec{j}tdt=\frac{1}{2} \vec{j}t^2 + \vec{v_0}$$
+$$\vec{r}=\int \vec{v}dt=\frac{1}{6}\vec{j}t^3 + \vec{v_0}t+\vec{r_0} $$
+\subsection{Average Speed}
+The naive equations for average speed are:
+$$\bar{v}=\frac{\Delta x}{\Delta t}$$
+$$\bar{v}=\frac{\Delta v}{2}$$
+Unfortunately, the second equation only holds for linearly increasing velocity. For non-constant acceleration, we must calculate the time-average as follows:
+$$\bar{v}=\frac{1}{\Delta t}\cdot \int_{t_1}^{t_2}v(t)dt=\frac{\Delta x}{\Delta t}$$
+This allows us to determine $\Delta x$ and thus $\bar{v}$ only using the function $v(t)$ and the time span $\Delta t$.
+\subsection{Circular Motion}
+\subsection{Vector Decomposition}
+Any vector $\vec{v}$ can be written as the product of its magnitude and the unit vector pointing in its direction (always denoted with a small "hat"):
+$$\vec{v}=|\vec{v}|\hat{v}$$
+Differentiating, we must apply the product rule as $|\vec{v}|(t)$ and $\hat{v}(t)$ may be time-varying functions:
+$$\vec{a}=\frac{d|\vec{v}|}{dt}\hat{v}+\frac{d\hat{v}}{dt}|\vec{v}|$$
+The left summand is responsible for changes in speed, the right summand is responsible for changes in direction. For circular motion, the right summand can loosely be considered:
+
+$$\frac{d\hat{v}}{dt}|\vec{v}| \sim \frac{d\theta}{dt}|\vec{v}|=\omega |\vec{v}|=\frac{|\vec{v}|^2}{r} $$
+\pagebreak
+\section{Momentum}
+\subsection{The Momentum Principle}
+Newton's second law states:
+$$\vec{F}=m\vec{a}$$
+where acceleration is the derivative of velocity. Equivalently:
+$$\vec{F}=\frac{d\vec{p}}{dt}$$
+For a short enough time span, the net force can be assumed to be constant:
+$$\Delta \vec{p}=\vec{F}_{net}\Delta t$$
+$\Delta \vec{p}$ or $\vec{J}$ is called the \textbf{impulse}. For a time varying net force:
+$$\vec{J}=\Delta\vec{p}=\int \vec{F}_{net} dt$$
+$$\Rightarrow \text{  }\vec{p}(t)=\int \vec{F}_{net}dt + \vec{p_0}$$
+\subsection{Collisions}
+\begin{itemize}
+    \item During collisions, forces and accelerations are typically huge, whereas the time span is very short. Thus, it is easier to model these using conservation of momentum.
+    \item If the external interactions can be ignored, use conservation of motion for the system.
+\end{itemize}
+
+\subsubsection{Conservation of Momentum} As a consequence of spacial symmetry (from Noether's theorem) momentum before and after certain collisions is conserved:
+$$\sum \limits_{j} \vec{p}_{j,initial}=\sum \limits_j \vec{p}_{j,final}$$
+\subsubsection{Time Scales}Humans are quite good at estimating distances and velocities, but can be very bad at guessing small time scales. Thus, it is often good practice to use the former two to calculate approximate time intervals if needed:
+
+$$\Delta t= \frac{x}{|\vec{v}|}$$
+\textbf{Note:} The time scale of a collision is also about the time a sound wave needs to travel through one of the objects and back:
+$$\Delta t = \frac{2x}{c}$$
+Where $c$ is the speed of sound and x is the length of the object that is parallel to the initial direction of the collision.
+\subsection{Center of Mass}If an object contains a finite number of point masses, its center of mass is given by:
+$$\vec{r}_{cm}=\frac{1}{M}\sum \limits_{i=1}^{n}m_i \vec{r}_i$$
+For continuous mass distributions, this can be expanded to:
+$$\vec{r}_{cm}=\frac{1}{M} \int \limits_M \vec{r} dm$$
+Where a substitution with one of the following density functions must be made: $\frac{dm}{dV}, \frac{dm}{dA}, \frac{dm}{dx}.$
+\\
+The velocity of the center of mass is simply:
+$$\vec{v}_{cm}=\frac{1}{M}\sum \limits_{i=1}^{n}m_i \vec{v}_i$$
+
+\subsection{Elastic Collisions}
+During an elastic collision, both kinetic energy and momentum are conserved.
+
+$$\sum \limits^{n}_{i=1}KE=\sum \limits^{n}_{i=1}\frac{p^2}{2m}=\text{constant}$$
+$$\sum \limits^{n}_{i=1}\vec{p}=\text{constant}$$
+To solve for velocities before and after collisions, it is useful to consider different reference frames.
+\subsubsection{Reference Frames}
+One can think of the reference frame of the center of mass as the "camera" of a system. In this reference frame, elastic collisions can only cause changes in the directions of velocities, not their magnitudes. To enter this frame, simply subtract the speed of the center of mass from each initial mass. Then, one must figure out the change in direction. For head on collisions, velocities are turned around. For off-center collisions, the two objects are "reflected" along the line tangent to their point of contact:
+
+
+
+
+\pagebreak
+\section{Gravity}
+\subsection{Gravity Near Earth}
+Recall Newton's (not quite) Universal Law of Gravity:
+$$|\vec{F}_{g}|=G\frac{mM}{r^2}$$
+On earth, we have (using the binomial expansion of $(R_E+y)^2$):
+$$|\vec{F}_{g}|=m\frac{GM_E}{(R_{E}+y)^2}=m\frac{GM_E}{R^2_E}\frac{1}{(1+\frac{y}{R_E})^2}$$
+
+$$m\frac{GM_E}{R^2_E}\left(1+\frac{y}{R_E}\right)^{-2}\approx m\left(\frac{GM_E}{R^2_E}\right)\left(1-2\frac{y}{R_E}\right)$$
+\subsection{Trajectory of Gravitational Motion}
+In general, for a field-generating mass $M$ and a test mass $m$, the test mass will follow either an elliptic, parabolic, or hyperbolic trajectory towards/around the central mass $M$ depending on the starting velocity.
+
+\begin{itemize}
+    \item For $v_0<v_{escape}$: Elliptic 
+    \item For $v_0=v_{escape}$: Parabolic
+    \item For $v_0>v_{escape}$: Hyperbolic
+\end{itemize}
+In general, for most objects on earth we can safely assume that the trajectory will be elliptic:
+$$y=a\sqrt{1-\frac{x^2}{b^2}}$$
+Flat earth approximation: We generally make the simplified assumption that the earth is locally flat and that $g$ does not change with height on earth's surface.
+\subsection{Gravitational Fields}
+In physics, a \textbf{field} is a function that assigns every point in space a scalar or vector value.
+
+$$\vec{g}=\frac{\vec{F_g}}{m}$$
+where $\vec{g}$ is the gravitational field vector.
+
+\subsection{Gravity within a Planet} While we normally make the assumption that at large distances all the mass of a celestial object is concentrated at its center of mass, this leads to inaccuracies beneath the surface. While below the surface of a spherical mass, the gravitational force is approximately linear:
+
+$$\vec{F_g}=G\frac{r}{R}\frac{mM}{R^2}$$
+
+Or, in the case of earth:
+
+$$\vec{F_g}=\frac{r}{R}mg$$
+Where $g$ is the acceleration due to gravity at earth's surface, $R$ is the radius of the earth, and $r$ is the distance from the center of mass. \textbf{Note:} As a consequence, if you were to drop an object down a hole through the center of the earth and to the other side, it would oscillate between the two sides of the planet.
+
+\subsection{Tides} Another consequence of spherically distributed masses like planets with oceans are tides. Due to the differing distance to the moon on opposite sides of the planet, the water on the side closer to the moon experiences the greatest acceleration, following by the slightly lower acceleration of the planet itself and the acceleration of the water on the other side, which is lowest. All three are moving towards the moon due to gravity; however, from the frame of reference of the earth, the water closer to the moon is moving towards the moon and the water further away is moving away from the moon. This is a consequence of relative motion.
+
+\pagebreak
+\section{Harmonic Motion}
+\subsection{Linear Force and Resulting Differential Equation}
+At the heart of harmonic motion is a linear force following Hooke's law:
+$$\vec{F}=-k\vec{x}$$
+$$\Rightarrow \frac{d^2 x}{dt^2}=-\frac{k}{m} x$$
+If we suggestively rewrite $\frac{k}{m}$ as $\omega^2$ this becomes:
+$$\frac{d^2 x}{dt^2}=-\omega^2 x$$
+This can be solved by the following equation:
+$$x(t)=A\text{cos}(\omega t + \phi_0)$$
+Where $\omega$ is the angular frequency. 
+$$\omega=\frac{2\pi}{T}$$
+\subsection{Characteristics of Simple Harmonic Motion} 
+\begin{itemize}
+    \item Velocity is highest at the so-called rest point and zero at the amplitudes, or so-called turning points.
+    \item Acceleration and force are zero at the rest point and maximal at the turning points.
+\end{itemize}
+\subsection{Pendulums} I will avoid lengthy discussions of pendulums because I am sick and tired of them. For small angles, their position is given by:
+$$\theta(t)=\theta_0\cdot \text{cos} \left( 2\pi \frac{t}{T} + \phi_0\right)$$
+With:
+$$T=2\pi \sqrt{\frac{L}{g}}$$
+Where $\theta_0$ is the amplitude, $t$ the time, $T$ the period, $\phi_0$ the phase shift, and $L$ the string length.
+
+\pagebreak
+\section{The Spring and Ball Model of Solids}
+In a stupid yet surprisingly accurate model, we can consider solids as consisting of balls (atoms) connected to each other by linearly elastic springs (atomic bonds, electromagnetism/strong force). 
+
+\subsection{Stress, Strain, and Young's Modulus}
+
+As we have seen in CIV102, Hooke's law can be alternatively formulated as:
+
+$$\sigma=E \varepsilon$$
+E is the Young's modulus, defined as:
+$$E=\frac{kL_0}{A}$$
+Here, $k$ is the spring constant of the material, $L_0$ is the undeformed length of a linear elastic material, and $A$ is the cross-sectional area perpendicular to axial forces being applied.
+$\sigma$ is stress, defined by:
+$$\sigma=\frac{F}{A}$$
+$\varepsilon$ is strain, defined by:
+$$\varepsilon=\frac{\Delta L}{L_0}$$
+where $\Delta L$ is the change in length.
+
+\subsection{Atomic density}
+We can assume atoms in a solid are evenly spaced in a square lattice. If a solid has a given atomic mass $M$ and density $\rho$, then we can consider atoms as spheres within a square prism of width d (also distance between atoms):
+
+$$\rho=\frac{M}{d^3}$$
+$$d =\sqrt[3]{\frac{M}{\rho}}$$
+\subsection{Sound}
+Sound waves can be modeled as the chained oscillation of the springs within a solid. One such oscillation has the following angular frequency:
+
+$$ \omega=\sqrt{\frac{E\frac{d^2}{d}}{M}}= \sqrt{\frac{Ed}{M}}$$
+The speed with which these oscillations travel is defined as the \textbf{speed of sound}:
+$$|\vec{v}|=\omega d=\sqrt{\frac{Ed^3}{M}}=\sqrt{\frac{E\frac{M}{\rho}}{M}}=\sqrt{\frac{E}{\rho}} $$
+
+\subsection{Normal Force}
+
+When using the ball-and-spring model, we can model the normal force as the restoring spring force generated to balance the downwards force of gravity of a mass resting on the top of a solid.
+
+\subsection{Modeling Friction}
+
+Similarly, when two solids slide along each other, we can consider their contacting surfaces as jagged, consisting of peaks and valleys of springs. When two peaks contact each other, kinetic energy from the movement is converted to elastic energy as the peaks are stretched. Once the surfaces slide enough, the peaks jump free and release their elastic energy in form of kinetic vibrational energy. This vibrational energy of the atoms on the solids is the same as thermal energy, explaining why the two solids heat up.
+
+\section{Energy and Power}
+
+The energy principle states:
+
+$$W=-\Delta E= -\int \vec{F}\cdot \vec{ds}$$
+
+\subsection{Work and Conservation of Energy}
+In particular, by time symmetry, energy is conserved. Because of this, energy usually doesn't give you much information about when something occurred, but rather where or at what velocity. Note that in general, the change in internal energy of an object consists of the sum of heat tranfer and work done on/by the object:
+
+$$\Delta E = Q-W$$
+
+This is also known as the \textbf{first law of thermodynamics.}
+
+\subsection{Kinetic Energy}
+
+$$KE=\frac{1}{2}mv^2$$
+
+\subsection{Conservative Forces and Potential Energy}
+
+Any force that does not depend on path taken, such as gravity, is called a conservative force. It can be assigned a potential and a potential energy. In the case of gravity:
+
+$$U=\int F_g dt$$
+
+$$U=-G\frac{Mm}{r}$$
+
+Close to the earth's surface, this becomes:
+
+$$U=mgh$$
+
+\subsection{Rotational Energy}
+
+If an object is rotating, it has an associated angular frequency $\omega$ and moment of inertia $I$. The moment of inertia, formally the second moment of mass, is defined by:
+
+$$I=\int\limits_{M} r^2 dm $$
+
+Similarly to how you calculate the center of mass, here you can use derivatives with respect to volume, area, or length.
+
+The rotational energy is defined as:
+$$E=\frac{1}{2}I\omega^2$$
+
+Note that for an object to roll, it must do so without slipping, so there must be friction involved. Furthermore, an object's total kinetic energy can be conserved in the form of translational and rotational energy.
+
+\subsection{Power}
+
+Power is the rate of change of energy. Constant power can be used to find kinetic energy and maximum speeds as functions of time for accelerating objects.
+
+$$P=\frac{dE}{dt}$$
+
+If P is constant:
+
+$$Pt=\frac{1}{2}mv^2$$
+
+\section{Air Resistance}
+
+Falling objects through air experience a counteracting force of air resistance, which can be modeled as:
+
+$$F_D=\frac{1}{2}\rho_{air} v^2 \cdot c_D A$$
+
+After enough time, drag equals gravity, causing an object to fall at terminal velocity (very difficult to model).
+
+\section{Rotation}
+
+Rotation is all about changes in angle. Everything from translation mostly transfers over in a slightly modified way. 
+
+\subsection{Angular Momentum}
+
+Angular momentum is conserved in situations with rotational symmetry. For rotating objects it is defined as:
+
+$$L=I\omega$$
+
+In general, even non-rotating objects have an angular momentum:
+
+$$\vec{L}=\vec{r}\times \vec{p}$$
+
+\subsection{Torque}
+
+Torque is the analogue of force (formally a type of moment) and the change of angular momentum:
+
+$$\vec{\tau}=\frac{d\vec{L}}{dt}$$
+
+$$\vec{\tau}=\vec{r}\times\vec{F}$$
+
+\subsection{Precession}
+
+If torque is not aligned with angular momentum, it will cause the object to turn so that its axis of rotation is more aligned with the torque. If torque is 90$\degree$ from angular momentum, the object is forced to precess in a circle. This is called gyroscopic precession.
+
+$$\tau=L\Omega$$
+
+Where $\Omega$ is the angular frequency of precession.
+
+\subsection{Parallel Axis Theorem}
+
+If the center of rotation is offset from the center of mass, the moment of inertia is given by:
+
+$$I=\sum\limits_{i=1}^{n} I_{0,i} + md_{i}^2$$
+\section{Quantized Energy}
+We know energy is quantized, that is there is a minimum energy level an atom can take on. $$\sig 3i $$ bla bla $\intg{2}{3}x^3 dx$
+
+\subsection{Quantum Harmonic Oscillators}
+
+\subsection{Discrete Energy Levels of Atoms}
+
+\section{Thermodynamics}
+
+\subsection{Multiplicity}
+
+\subsection{Boltzman Factor}
+
+\subsection{Entropy}
+
+\subsection{Temperature}
+
+
+
+\
+
+\end{document}
+
