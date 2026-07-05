@@ -1,0 +1,351 @@
+\documentclass[14pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{titlesec}
+\usepackage{multicol, caption}
+\usepackage{blindtext}
+\usepackage{amsmath}
+\usepackage{titlesec}
+\usepackage{gensymb}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{cite}
+\usepackage{caption}
+\usepackage[a4paper,total={6.5in,10in}]{geometry}
+\usepackage{amssymb}
+\usepackage{natbib}
+\usepackage[colorlinks=true, allcolors=black]{hyperref}
+\usepackage{titlesec}
+\usepackage{titling}
+\usepackage{wrapfig}
+\usepackage{lipsum}
+\usepackage{fancyhdr}
+\bibliographystyle{IEEEtran}
+\setcounter{tocdepth}{2}
+\titleformat*{\subsubsection}{\normalfont\fontfamily{cmr}\fontsize{12}{12}\selectfont}
+
+\setlength{\droptitle}{-5em} 
+\graphicspath{ {./Images/} }
+\setlength\columnsep{30pt}
+\newenvironment{Figure}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
+
+\titleformat*{\section}{%
+    \fontsize{16}{17}\bfseries%
+}
+
+\titleformat*{\subsection}{%
+    \fontsize{13}{15}\bfseries%
+}
+\title{CIV102F - Structures and Materials Equations}
+\author{Miles Ehrlich}
+\date{December 2025}
+
+\begin{document}
+
+\maketitle
+\begin{multicols}{2}
+
+    \section{Basic Concepts}
+    \subsection{Equilibrium}
+    
+    \begin{equation}
+        \\ \sum F_x=0 \quad
+        \\ \sum F_y=0 \quad
+        \\ \sum M_P=0
+    \end{equation}
+    \begin{equation}
+        F_y=F_x \text{tan}(\theta)
+    \end{equation}
+
+    \subsection{Moment}
+    \begin{equation}
+        M=F\cdot d_{\perp}
+    \end{equation}
+    \subsection{Stress-Strain}
+    \begin{equation}
+        \sigma = \frac{F}{A}
+    \end{equation}
+    \begin{equation}
+        \varepsilon=\frac{\Delta}{L_0}
+    \end{equation}
+    \begin{equation}
+        \sigma=E\cdot \varepsilon=k\frac{L_0}{A}\cdot \varepsilon
+    \end{equation}
+    \begin{equation}
+        \Delta=\frac{FL_0}{EA}
+    \end{equation}
+    \begin{equation}
+        U=\int \sigma d\varepsilon=\frac{1}{2}\sigma \varepsilon
+    \end{equation}
+    \begin{equation}
+        W=U\cdot V_0
+    \end{equation}
+    \begin{equation}
+        R=\int \limits_{0}^{\varepsilon_y} \sigma d\varepsilon
+    \end{equation}
+    \begin{equation}
+        T=\int \limits_{0}^{\varepsilon_r} \sigma d\varepsilon
+    \end{equation}
+    \section{Suspension Bridges}
+    \begin{equation}
+        A_y=B_y=\frac{wL}{2}
+    \end{equation}
+    \begin{equation}
+        H=\frac{wL^2}{8h}
+    \end{equation}
+    \begin{equation}
+        T_{max}=\sqrt{H^2+A_y^2}
+    \end{equation}
+    \section{Structural Analysis}
+    \subsection{Pulleys}
+    \begin{equation}
+        T1=T2
+    \end{equation}
+    \subsection{Rollers}
+    \begin{equation}
+        \sum F_y=0
+    \end{equation}
+    \subsection{Pins, Hinges}
+    \begin{equation}
+        \sum F_x = \sum F_y = 0
+    \end{equation}
+    \subsection{Fixed End}
+    \begin{equation}
+        \sum F_x = \sum F_y = \sum M=0
+    \end{equation}
+    \section{Oscillations}
+    \subsection{Simple Harmonic Motion}
+    \begin{equation}
+        F=-kx
+    \end{equation}
+    \begin{equation}
+        x(t)=A\text{sin}(\omega t) + \Delta_0
+    \end{equation}
+    \begin{equation}
+        \omega=\sqrt{\frac{k}{m}}
+    \end{equation}
+    \begin{equation}
+        f_{n,point}=\frac{15.76}{\sqrt{\Delta_0}}
+    \end{equation}
+    \begin{equation}
+        f_{n,UDL}=\frac{17.76}{\sqrt{\Delta_0}}
+    \end{equation}
+    \subsection{Driven Damped Oscillation}
+    \begin{equation}
+        F(t)=F_0\text{sin}(\omega t)
+    \end{equation}
+    \begin{equation}
+        x(t)=DAF\cdot \frac{F_0}{k} \text{sin}(\omega t + \phi)+\Delta_0
+    \end{equation}
+    \begin{equation}
+        DAF=\frac{1}{\sqrt{\left(1-\left(\frac{f}{f_n}\right)^2\right)^2+\left(\frac{2\beta f}{f_n}\right)^2}}
+    \end{equation}
+    \begin{equation}
+        F_{max}=F_{stat}+DAF\cdot F_0
+    \end{equation}
+    \begin{equation}
+        \Delta x_{max} = \Delta x_{stat} \cdot \frac{F_{max}}{F_0}
+    \end{equation}
+    \section{Cross-Sections}
+    \begin{equation}
+        \bar{y}=\frac{\sum A_i y_i }{A_i}
+    \end{equation}
+    \begin{equation}
+        I=\int_M y^2 dA
+    \end{equation}
+    \begin{equation}
+        I=\sum I_0 + A_i d_i^2
+        \quad | \quad d=\bar{y}-y_i
+    \end{equation}
+    \begin{equation}
+        I_{Rect}=\frac{bh^3}{12}
+    \end{equation}
+    \begin{equation}
+        I_{Circ}=\frac{\pi d^4}{64}
+    \end{equation}
+    \begin{equation}
+        Q=\int \limits_{y_{\tau=0}}^{y} y dA
+    \end{equation}
+    \begin{equation}
+        Q=\sum A_i d_i
+    \end{equation}
+    \section{Bending}
+    \begin{equation}
+        \phi=\frac{d\theta}{dx}=\frac{d^2y}{dx^2}
+    \end{equation}
+    \begin{equation}
+        \varepsilon=\phi y
+    \end{equation}
+    \begin{equation}
+        M=EI\phi
+    \end{equation}
+    \section{Euler Buckling}
+    \begin{equation}
+        P_{crit}=\frac{n^2 \pi^2 EI}{L^2}
+    \end{equation}
+    \begin{equation}
+        r=\sqrt{\frac{I}{A}}
+    \end{equation}
+    \begin{equation}
+        \sigma_{crit}=\frac{\pi^2 E}{\left(\frac{L}{r}\right)^2}
+    \end{equation}
+    \begin{equation}
+        \Delta_{lat}=\frac{\Delta_0}{1-{\frac{P}{P_{crit}}}}
+    \end{equation}
+    \section{Trusses}
+    \begin{equation}
+        A>\frac{2F_{max}}{\sigma_y}
+    \end{equation}
+    \begin{equation}
+        I>\frac{3L^2C_{max}}{\pi^2 E}
+    \end{equation}
+    \begin{equation}
+        r>\frac{L}{200}
+    \end{equation}
+    \begin{equation}
+        w_{wind}=2\text{kPa}
+    \end{equation}
+    \begin{equation}
+        A_{wind}=\sum \frac{L_i}{2}
+    \end{equation}
+    \begin{equation}
+        A_{wind, rail} = h\cdot s
+    \end{equation}
+    \begin{equation}
+        \Delta_{brace} = 0.01L
+    \end{equation}
+    \begin{equation}
+        R_{brace}= 0.02P
+    \end{equation}
+    \begin{equation}
+        P^* \cdot \Delta_B=\sum P^*_i \cdot \frac{P_iL_0}{EA}
+    \end{equation}
+    \section{Beams}
+    \subsection{Stress Resultants}
+    \begin{equation}
+        \sigma=\frac{My}{I}+\frac{N}{A}
+    \end{equation}
+    \begin{equation}
+        \tau_c = \frac{VQ_{max}}{Ib_c}
+    \end{equation}
+    \begin{equation}
+        \tau_g = \frac{VQ_{g}}{Ib_g}
+    \end{equation}
+    \begin{equation}
+        V(x)=\int w(x) dx + P_0
+    \end{equation}
+    \begin{equation}
+        M(x)=\int V(x) dx + M_0
+    \end{equation}
+    \begin{equation}
+        \phi(x) = \frac{M(x)}{EI}
+    \end{equation}
+    \begin{equation}
+        E_{w, design}=\frac{E_{05}}{1.5}
+    \end{equation}
+    \begin{equation}
+        E_{w, deflection}=E_{50}
+    \end{equation}
+    \subsection{Deflections/Moment Area Theorems}
+    \begin{equation}
+        \Delta \theta_A^B=\int \limits_{A}^{B} \phi (x) dx
+    \end{equation}
+    \begin{equation}
+        \delta_{BA}=\int \limits_{A}^{B} x \phi(x)dx=\sum \bar{x}_i\cdot A_{\phi,i}
+    \end{equation}
+    \subsection{Local Buckling}
+    \begin{equation}
+        \mu=-\frac{\varepsilon_y}{\varepsilon_x}
+    \end{equation}
+    \begin{equation}
+        E_{apparent}=\frac{E}{1-\mu^2}
+    \end{equation}
+    \begin{equation}
+        \sigma_{1}=4\cdot \frac{\pi^2 E}{12(1-\mu^2)}\cdot\left(\frac{t}{b}\right)^2
+    \end{equation}
+    \begin{equation}
+        \sigma_{2}=0.425\cdot \frac{\pi^2 E}{12(1-\mu^2)}\cdot\left(\frac{t}{b}\right)^2
+    \end{equation}
+    \begin{equation}
+        \sigma_{3}=6\cdot \frac{\pi^2 E}{12(1-\mu^2)}\cdot\left(\frac{t}{b}\right)^2
+    \end{equation}
+    \begin{equation}
+        \tau=5\cdot \frac{\pi^2 E}{12(1-\mu^2)}\cdot\left(\left(\frac{t}{b}\right)^2+\left(\frac{t}{h}\right)^2\right)
+    \end{equation}
+    \pagebreak
+    \section{Concrete}
+    \subsection{Properties}
+    \begin{equation}
+        f_t'=0.33\sqrt{f_c'}
+    \end{equation}
+    \begin{equation}
+        E_c=4730\sqrt{f_c'} \quad | \quad f_c<0.4f_c'
+    \end{equation}
+    \subsection{Flexure}
+    \begin{equation}
+        T=A_s \varepsilon E_s
+    \end{equation}
+    \begin{equation}
+        \eta=\frac{E_s}{E_c}
+    \end{equation}
+    \begin{equation}
+        \rho = \frac{A_s}{bd}
+    \end{equation}
+    \begin{equation}
+        K=\sqrt{(\eta \rho)^2 +2 \eta \rho}-\eta \rho
+    \end{equation}
+    \begin{equation}
+        j=(1-\frac{K}{3})
+    \end{equation}
+    \begin{equation}
+        f_s=\frac{M}{A_sjd}
+    \end{equation}
+    \begin{equation}
+        f_c=\frac{K}{1-K}\frac{M}{\eta A_s jd}
+    \end{equation}
+    \subsection{Shear}
+    \begin{equation}
+        v=\frac{V}{b_wjd}
+    \end{equation}
+    \begin{equation}
+        V_c + V_s = V_r 
+    \end{equation}
+    \begin{equation}
+        V<0.5V_c+0.6V_s<0.125 b_wjd \cdot f_c'
+    \end{equation}
+    \begin{equation}
+        V_{c, weak}=\frac{230\sqrt{f_c'}}{1000+0.9d}b_wjd
+    \end{equation}
+    \begin{equation}
+        \frac{A_s f_y}{b_ws}\geq 0.06 \sqrt{f_c'}
+    \end{equation}
+    \begin{equation}
+        s\leq\frac{A_sf_y}{0.06\cdot b_w \sqrt{f_c'}}
+    \end{equation}
+    \begin{equation}
+        V_{c, strong}=0.18\sqrt{f_c'}b_wjd
+    \end{equation}
+    \begin{equation}
+        V_s=\frac{A_v f_y jd \text{cot}(35\degree)}{s}
+    \end{equation}
+    \begin{equation}
+        s<600\text{mm}
+    \end{equation}
+    \begin{equation}
+        s<0.63d
+    \end{equation}
+    \begin{equation}
+    s_{safe}=\frac{0.6A_vf_yjd\text{cot} (35\degree)}{V_{applied}-0.5V_c}
+    \end{equation}
+    \begin{equation} s_{safe}=\frac{0.6A_vf_yjd\text{cot}(35\degree)}{V_{applied}-0.5\cdot 0.18\sqrt{f_c'}b_wjd}
+    \end{equation}
+    
+    
+
+
+\end{multicols}
+
+
+\end{document}
