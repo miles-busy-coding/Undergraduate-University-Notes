@@ -91,6 +91,13 @@ Example: A goalkeeper kicks a football.
 A system is a collection of the things we care about---they are likely interacting. The surroundings are everything else in the universe. If the surroundings interact with the system, it is not isolated.
 \pagebreak
 \section{Uncertainties}
+Every physical quantity we can measure that is not clearly an integer generally has an uncertainty associated with it. 
+\subsection{Type A Uncertainties}
+A type A uncertainty originates in the uncertainty of the quantity being measured, so multiple trials will yield different values if measured at different times. This can be mitigated by taking more measurements and using a modified standard deviation as the error.
+\subsection{Type B Uncertainties}
+Type B uncertainties originate in measurement error, i.e. how precise the measurement process is. In general, the type B error will be half of the smallest discrete increment of the metric being measured.
+\subsection{Error Reporting}
+In general, a quantity will be reported up to the first significant digit of the error, $\pm$ this one digit of error. More than one sig. fig. of error is generally not reported.
 \pagebreak
 \section{Motion}
 \subsection{Motion Diagrams}
@@ -128,6 +135,9 @@ Unfortunately, the second equation only holds for linearly increasing velocity. 
 $$\bar{v}=\frac{1}{\Delta t}\cdot \int_{t_1}^{t_2}v(t)dt=\frac{\Delta x}{\Delta t}$$
 This allows us to determine $\Delta x$ and thus $\bar{v}$ only using the function $v(t)$ and the time span $\Delta t$.
 \subsection{Circular Motion}
+In circular motion, a force labeled as centripetal acts tangentially to an object's direction of motion, pointing radially towards the center of the so-called "kissing circle" 
+$$\vec{F}_{C}=\frac{m\vec{v}^2}{R}$$
+$$\vec{v}\cdot\vec{F}_{C}=0$$
 \subsection{Vector Decomposition}
 Any vector $\vec{v}$ can be written as the product of its magnitude and the unit vector pointing in its direction (always denoted with a small "hat"):
 $$\vec{v}=|\vec{v}|\hat{v}$$
@@ -205,7 +215,7 @@ $$y=a\sqrt{1-\frac{x^2}{b^2}}$$
 Flat earth approximation: We generally make the simplified assumption that the earth is locally flat and that $g$ does not change with height on earth's surface.
 \subsection{Gravitational Fields}
 In physics, a \textbf{field} is a function that assigns every point in space a scalar or vector value.
-
+$$g:\mathbb{R}^3 \rightarrow \mathbb{R}^3$$
 $$\vec{g}=\frac{\vec{F_g}}{m}$$
 where $\vec{g}$ is the gravitational field vector.
 
@@ -281,7 +291,7 @@ When using the ball-and-spring model, we can model the normal force as the resto
 
 Similarly, when two solids slide along each other, we can consider their contacting surfaces as jagged, consisting of peaks and valleys of springs. When two peaks contact each other, kinetic energy from the movement is converted to elastic energy as the peaks are stretched. Once the surfaces slide enough, the peaks jump free and release their elastic energy in form of kinetic vibrational energy. This vibrational energy of the atoms on the solids is the same as thermal energy, explaining why the two solids heat up.
 
-\section{Energy and Power}
+\pagebreak\section{Energy and Power}
 
 The energy principle states:
 
@@ -376,22 +386,33 @@ Where $\Omega$ is the angular frequency of precession.
 If the center of rotation is offset from the center of mass, the moment of inertia is given by:
 
 $$I=\sum\limits_{i=1}^{n} I_{0,i} + md_{i}^2$$
-\section{Quantized Energy}
-We know energy is quantized, that is there is a minimum energy level an atom can take on. $$\sig 3i $$ bla bla $\intg{2}{3}x^3 dx$
+\section{Quantum Harmonic Oscillators}
+We know energy is quantized, so there is a minimum energy level an atom can take on. 
 
-\subsection{Quantum Harmonic Oscillators}
+$$E_N=(N+1)\cdot \hbar\sqrt{\frac{k_s}{m}}$$
 
-\subsection{Discrete Energy Levels of Atoms}
+
 
 \section{Thermodynamics}
 
 \subsection{Multiplicity}
+$$\Omega=\binom{n+k-1}{k}=\binom{n+k-1}{n-1}$$
+Where $\Omega$ is the multiplicity, or number of possible states of $n$ energy quanta distributed among $k$ atoms.
 
 \subsection{Boltzman Factor}
 
+$$\mathbb{P}(E=E_0)=\exp\left({\frac{-E_0}{k_bT}}\right)$$
+Where $E$ is the energy of an atom and $\mathbb{P}$ is the probability of finding an atom in this state.
+
 \subsection{Entropy}
 
+According to Boltzmann, we can define entropy for microstates:
+
+$$S=k_b \ln(\Omega)$$
+
 \subsection{Temperature}
+
+$$\frac{1}{T}=\dif{S}{E_{int}}$$
 
 
 
